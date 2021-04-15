@@ -2,8 +2,6 @@
 """
 
 @author: Zachary Lanz
-
-Instructions for Dr. Young:
     
 1)	Run the program up until the movie reviews documents.
 2)	Run the “documents = movies_reviews” along with the first preprocessing/baseline.
@@ -15,9 +13,6 @@ Instructions for Dr. Young:
 
 """
 
-
-
-#imported just incase any was necessary 
 #import nltk
 #import random
 #import collections
@@ -126,66 +121,3 @@ tf_feature_names3 = tf_vectorizer3.get_feature_names()
 
 lda = LatentDirichletAllocation(n_components=num_topics3, max_iter=50, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
 display_topics(lda, tf_feature_names3, num_top_words3)
-
-
-
-"""
-Challenge: re-run with different 'preprocessing' choices for CountVectorizer
-and different numbers of iterations.
-
-
-Here are some potential arguments for CountVectorizer from http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
-
-max_iter : how many cycles of moving around the features do you want to run. More iterations may lead to more refined results.
-
-strip_accents : {‘ascii’, ‘unicode’, None}
-
-    Remove accents and perform other character normalization during the preprocessing step. ‘ascii’ is a fast method that only works on characters that have an direct ASCII mapping. ‘unicode’ is a slightly slower method that works on any characters. None (default) does nothing.
-
-    Both ‘ascii’ and ‘unicode’ use NFKD normalization from unicodedata.normalize.
-
-
-lowercase : boolean, True by default
-
-    Convert all characters to lowercase before tokenizing.
-
-
-
-stop_words : string {‘english’}, list, or None (default)
-
-    If ‘english’, a built-in stop word list for English is used. There are several known issues with ‘english’ and you should consider an alternative (see Using stop words).
-
-    If a list, that list is assumed to contain stop words, all of which will be removed from the resulting tokens. Only applies if analyzer == 'word'.
-
-    If None, no stop words will be used. max_df can be set to a value in the range [0.7, 1.0) to automatically detect and filter stop words based on intra corpus document frequency of terms.
-
-    token_pattern : string
-
-    Regular expression denoting what constitutes a “token”, only used if analyzer == 'word'. The default regexp select tokens of 2 or more alphanumeric characters (punctuation is completely ignored and always treated as a token separator).
-
-
-ngram_range : tuple (min_n, max_n)
-
-    The lower and upper boundary of the range of n-values for different n-grams to be extracted. All values of n such that min_n <= n <= max_n will be used.
-
-
-
-max_df : float in range [0.0, 1.0] or int, default=1.0
-
-    When building the vocabulary ignore terms that have a document frequency strictly higher than the given threshold (corpus-specific stop words). If float, the parameter represents a proportion of documents, integer absolute counts. This parameter is ignored if vocabulary is not None.
-
-
-min_df : float in range [0.0, 1.0] or int, default=1
-
-    When building the vocabulary ignore terms that have a document frequency strictly lower than the given threshold. This value is also called cut-off in the literature. If float, the parameter represents a proportion of documents, integer absolute counts. This parameter is ignored if vocabulary is not None.
-
-
-max_features : int or None, default=None
-
-    If not None, build a vocabulary that only consider the top max_features ordered by term frequency across the corpus.
-
-    This parameter is ignored if vocabulary is not None.
-
-
-"""
-
